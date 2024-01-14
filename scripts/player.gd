@@ -102,6 +102,4 @@ func _physics_process(delta):
 			velocity.y = 0
 			load_timer = LOAD_TIMER
 
-func _on_area_2d_body_entered(body):
-	get_tree().reload_current_scene()
 

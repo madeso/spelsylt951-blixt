@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfw2t5p75hi71"]
+
+[ext_resource type="Texture2D" uid="uid://cuv1p8g1h8kwx" path="res://gfx/sprites.png" id="1_g2be0"]
+[ext_resource type="Script" path="res://scripts/thunder.gd" id="2_4wkn4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q4xl"]
+atlas = ExtResource("1_g2be0")
+region = Rect2(0, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nukns"]
+atlas = ExtResource("1_g2be0")
+region = Rect2(64, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8blj"]
+atlas = ExtResource("1_g2be0")
+region = Rect2(128, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yl1p"]
+atlas = ExtResource("1_g2be0")
+region = Rect2(192, 384, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gx75b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6q4xl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nukns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8blj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yl1p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yetb1"]
+size = Vector2(33, 33)
+
+[node name="thunder" type="Area2D"]
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gx75b")
+script = ExtResource("2_4wkn4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.5, 2.5)
+shape = SubResource("RectangleShape2D_yetb1")
+
+[connection signal="body_entered" from="." to="AnimatedSprite2D" method="_on_thunder_body_entered"]
