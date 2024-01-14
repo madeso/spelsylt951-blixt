@@ -21,6 +21,7 @@ Globals="*res://scripts/globals.gd"
 
 [display]
 
+window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
 [rendering]
